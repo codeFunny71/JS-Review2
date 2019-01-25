@@ -1,4 +1,13 @@
 
+/*
+    Marcus Absher
+    1/25/2019
+    http://mabsher.greenriverdev.com/328/JS-Review/review.html
+    https://github.com/codeFunny71/JS-Review2
+*/
+//1. Write a function objEquals that takes two objects and
+//   returns true only if they have the same properties and property values.
+
 //create function ojbEquals
 
 function objEquals(first, second) {
@@ -22,6 +31,8 @@ function objEquals(first, second) {
 
 var obj = {here: {is: "an"}, object: 2};
 
+console.log("Object Equals Test:");
+
 console.log(objEquals(obj, obj));
 // → true
 
@@ -44,4 +55,19 @@ console.log(objEquals(obj, {here: {is: "an", deep: {poop: null, value: -1}}, obj
 // → false
 
 
-//
+//2.Write a method flatten() can take an array of arrays
+//  and return a single array that has all the elements
+//  of the original arrays.
+//  const flatten = array => array.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
+//create function flatten()
+
+const flatten = (arrayOfArrays)=>{
+    return arrayOfArrays.reduce((flattenedPiece, newPiece) =>
+        flattenedPiece.concat(Array.isArray(newPiece) ? flatten(newPiece) : newPiece), []);
+}
+
+var arr = [[1, 2, 3], [4, 5], [6]];
+console.log("Flatten Test:");
+console.log(flatten(arr));
+
+// → [1, 2, 3, 4, 5, 6]
